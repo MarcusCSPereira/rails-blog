@@ -96,12 +96,17 @@ GEM
       irb (~> 1.10)
       reline (>= 0.3.8)
     dotenv (3.1.8)
+    dotenv-rails (3.1.8)
+      dotenv (= 3.1.8)
+      railties (>= 6.1)
     drb (2.2.3)
     ed25519 (1.4.0)
     erb (6.0.0)
     erubi (1.13.1)
     et-orbi (1.4.0)
       tzinfo
+    faker (3.5.2)
+      i18n (>= 1.8.11, < 2)
     ffi (1.17.2-aarch64-linux-gnu)
     ffi (1.17.2-aarch64-linux-musl)
     ffi (1.17.2-arm-linux-gnu)
@@ -323,6 +328,9 @@ GEM
     thruster (0.1.16-x86_64-linux)
     timeout (0.4.4)
     tsort (0.2.0)
+    tty-cursor (0.7.1)
+    tty-spinner (0.9.3)
+      tty-cursor (~> 0.7)
     turbo-rails (2.0.20)
       actionpack (>= 7.1.0)
       railties (>= 7.1.0)
@@ -360,6 +368,8 @@ DEPENDENCIES
   brakeman
   bundler-audit
   debug
+  dotenv-rails
+  faker
   image_processing (~> 1.2)
   importmap-rails
   jbuilder
@@ -375,6 +385,7 @@ DEPENDENCIES
   solid_queue
   stimulus-rails
   thruster
+  tty-spinner
   turbo-rails
   tzinfo-data
   web-console
