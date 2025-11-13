@@ -2,6 +2,6 @@
 
 <div id="articles">
   <% @articles.each do |article| %>
-    <%= render partial: "articles", article %>
+    <%= render partial: "articles", locals: { article: article } %>
   <% end %>
 </div>
