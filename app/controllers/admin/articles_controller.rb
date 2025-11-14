@@ -64,7 +64,7 @@ module Admin
 
     # Use callbacks to share common setup or constraints between actions.
     def set_article
-      @article = Article.find(params.expect(:id))
+      @article = Article.friendly.find(params.expect(:id))
     end
 
     # Only allow a list of trusted parameters through.
