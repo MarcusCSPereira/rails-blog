@@ -2,6 +2,7 @@
 
 module Admin
   class ArticlesController < ApplicationController
+    before_action :authenticate_admin_user!
     before_action :set_article, only: [:show, :edit, :update, :destroy]
 
     # GET /articles or /articles.json

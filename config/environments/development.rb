@@ -82,4 +82,7 @@ Rails.application.configure do
   config.generators.after_generate do |files|
     system("bundle exec rubocop -A --fail-level=E #{files.shelljoin}", exception: true)
   end
+
+  # Devise
+  config.action_mailer.default_url_options = { host: "localhost", port: 3000 }
 end

@@ -1,0 +1,25 @@
+pt-BR:
+  activerecord:
+    models:
+      article:
+        one: Artigo
+        other: Artigos
+      admin_user:
+        one: Administrador
+        other: Administradores
+    attributes:
+      article:
+        id: Identificador
+        title: Título
+        body: Corpo
+        created_at: Criado em
+        updated_at: Atualizado em
+      admin_user:
+        id: Identificador
+        email: E-mail
+        encrypted_password: Senha criptografada
+        reset_password_token: Token para resetar senha
+        reset_password_sent_at: Reset de senha enviado em
+        remember_created_at: Lembrar criado em
+        created_at: Criado em
+        updated_at: Atualizado em
