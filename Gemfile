@@ -53,6 +53,9 @@ group :development, :test do
   # Audits gems for known security defects (use config/bundler-audit.yml to ignore issues)
   gem "bundler-audit", require: false
 
+  # Load environment variables from .env file
+  gem "dotenv-rails"
+
   # Static analysis for security vulnerabilities [https://brakemanscanner.org/]
   gem "brakeman", require: false
 end
@@ -60,9 +63,6 @@ end
 group :development do
   # Use console on exceptions pages [https://github.com/rails/web-console]
   gem "web-console"
-
-  # Load environment variables from .env file
-  gem "dotenv-rails"
 
   gem "faker"
 

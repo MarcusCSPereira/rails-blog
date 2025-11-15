@@ -44,5 +44,8 @@ module RailsBlog
     # I18n
     config.i18n.default_locale = :"pt-BR"
     config.i18n.available_locales = [:en, :"pt-BR"]
+
+    # Image Processing
+    config.active_storage.variant_processor = :mini_magick
   end
 end
