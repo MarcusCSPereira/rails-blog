@@ -1,0 +1,25 @@
+// Asset paths - Centralized for easy maintenance
+$asset-path: "/assets";
+$icons-path: "#{$asset-path}/icons";
+
+// Specific icon paths
+$icon-google: "#{$icons-path}/colored/google.svg";
+$icon-facebook: "#{$icons-path}/white/facebook.svg";
+$icon-apple: "#{$icons-path}/white/apple.svg";
+$icon-arrow-down-white: "#{$icons-path}/white/arrow-down.svg";
+$icon-arrow-down-red: "#{$icons-path}/red/arrow-down.svg";
+$icon-thumbs-up-black: "#{$icons-path}/black/thumbs-up.svg";
+$icon-thumbs-up-red: "#{$icons-path}/red-dark/thumbs-up.svg";
+$icon-thumbs-down-black: "#{$icons-path}/black/thumbs-down.svg";
+$icon-thumbs-down-red: "#{$icons-path}/red-dark/thumbs-down.svg";
+$icon-share: "#{$icons-path}/black/share.svg";
+$icon-comments: "#{$icons-path}/red-dark/comments.svg";
+$icon-author: "#{$icons-path}/gray/author.svg";
+$icon-date: "#{$icons-path}/gray/date.svg";
+
+// Background images
+$img-main-banner-detail: "#{$asset-path}/main-banner-detail.svg";
+$img-post-detail-shape: "#{$asset-path}/post-detail-shape.svg";
+$img-admin-login-bg: "#{$asset-path}/admin-login-background.jpg";
+$img-admin-login-shape: "#{$asset-path}/admin-login-shape.svg";
+

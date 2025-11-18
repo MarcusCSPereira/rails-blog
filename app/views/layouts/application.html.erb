@@ -1,13 +1,23 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title><%= content_for(:title) || "Rails Blog" %></title>
+
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="application-name" content="Rails Blog">
-    <meta name="mobile-web-app-capable" content="yes">
+    <title>Rails Blog</title>
+
+    <!-- Favicon -->
+    <%= favicon_link_tag asset_path("favicon.ico") %>
+
+    <!-- CSRF Meta Tags -->
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather+Sans:wght@300;400;600;800&display=swap" rel="stylesheet">
 
     <%= yield :head %>
 
@@ -24,7 +34,18 @@
   </head>
 
   <body>
-    <h1>Application</h1>
+    <%= render "/layouts/shared/application/header" %>
+    <%= render "/layouts/shared/application/main-banner" %>
+    <%= render "/layouts/shared/application/post-grid" %>
+    <%= render "/layouts/shared/application/categories" %>
+    <%= render "/layouts/shared/application/footer" %>
+
     <%= yield %>
+
+    <%= javascript_include_tag "jquery/jquery1.min.js" %>
+    <%= javascript_include_tag "slick/slick.min.js" %>
+    <%= javascript_include_tag "menu.js" %>
+    <%= javascript_include_tag "posts-grid.js" %>
+    
   </body>
 </html>
