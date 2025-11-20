@@ -1,0 +1,39 @@
+<section class="section login-form-section">
+  <div class="container">
+    <h1 class="form-title">Acessar sua conta</h1>
+      <%= form_for(resource, as: resource_name, url: session_path(resource_name), html: { class: "form paddingless borderless" }) do |f| %>
+      <div class="input-row">
+        <div class="input-container">
+          <%= f.label :email, class: "label" %>
+          <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "Digite seu e-mail", class: "input" %>
+        </div>
+      </div>
+      <div class="input-row">
+        <div class="input-container">
+          <%= f.label :password, class: "label" %>
+          <%= f.password_field :password, autocomplete: "current-password", placeholder: "Digite sua senha", class: "input" %>
+        </div>
+      </div>
+      <div class="input-row">
+        <div class="input-container">
+          <%= f.submit "Entrar", class: "button full" %>
+        </div>
+      </div>
+      <div class="form-divisor"></div>
+      <div class="social-buttons">
+        <a href="login-senha.html" class="button google">
+          <span class="button-icon"></span>
+          <span class="button-label">Continuar com Google</span>
+        </a>
+        <a href="login-senha.html" class="button facebook">
+          <span class="button-icon"></span>
+          <span class="button-label">Continuar com Facebook</span>
+        </a>
+        <a href="login-senha.html" class="button apple">
+          <span class="button-icon"></span>
+          <span class="button-label">Continuar com Apple</span>
+        </a>
+      </div>
+    <% end %>
+  </div>
+</section>

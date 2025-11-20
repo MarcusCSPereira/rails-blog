@@ -35,12 +35,8 @@
 
   <body>
     <%= render "/layouts/shared/application/header" %>
-    <%= render "/layouts/shared/application/main-banner" %>
-    <%= render "/layouts/shared/application/post-grid" %>
-    <%= render "/layouts/shared/application/categories" %>
-    <%= render "/layouts/shared/application/footer" %>
-
     <%= yield %>
+    <%= render "/layouts/shared/application/footer" %>
 
     <%= javascript_include_tag "jquery/jquery1.min.js" %>
     <%= javascript_include_tag "slick/slick.min.js" %>

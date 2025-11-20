@@ -1,0 +1,16 @@
+<section class="section posts-grid-section">
+  <div class="container">
+    <div class="title-container with-item">
+      <h2 class="title">Publicações mais recentes</h2>
+      <a href="#" class="button">Ver todos</a>
+    </div>
+    <div class="grid" id="postGridHome">
+    <% @articles.each do |article| %>
+      <%= render "articles", article: article %>
+    <% end %>
+    <div class="grid-mobile">
+      <div class="bullets" id="postGridHomeBullets"></div>
+      <div><a href="#" class="button clean">ver mais</a></div>
+    </div>
+  </div>
+</section>
