@@ -1,17 +1,22 @@
 <div id="<%= dom_id article %>">
-  <div>
-    <strong>Tittle:</strong>
-    <%= article.title %>
-  </div>
-
-  <div>
-    <strong>Body:</strong>
-    <%= article.body %>
-  </div>
-
-  <div>
-    <strong>Cover Image:</strong>
-    <%= image_tag article.cover_image.variant(:thumb) if article.cover_image.attached? %>
-  </div>
-
+  <tr>
+    <td><%= l(article.created_at) %></td>
+    <td>Frontend</td>
+    <td><%= article.title %></td>
+    <td>
+      <div class="icons">
+        <% if local_assigns[:show_view_button] != false %>
+          <%= link_to admin_article_path(article), title: "Visualizar", alt: "eye" do %>
+            <%= image_tag "icons/gray/eye.svg"%>
+          <% end %>
+        <% end %>
+        <%= link_to edit_admin_article_path(article), alt: "edit" do %>
+          <%= image_tag "icons/gray/edit.svg" %>
+        <% end %>
+        <%= button_to [:admin, article], method: :delete, data: { turbo_confirm: "Tem certeza que deseja deletar este artigo?" }, alt: "close", class: "button clean" do %>
+          <%= image_tag "icons/gray/close.svg" %>
+        <% end %>
+      </div>
+    </td>
+  </tr>
 </div>

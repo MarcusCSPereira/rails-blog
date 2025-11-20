@@ -1,24 +1,29 @@
-<p style="color: green"><%= notice %></p>
-
-<% content_for :title, "Articles" %>
-
-<p>
-  <%= "Welcome to the admin area " + current_admin_user.email %>
-</p>
-
-<%= link_to destroy_admin_user_session_path, data: { turbo_method: :delete } do %>
-  <button>Fazer Logoff</button>
-<% end %>
-
-<h1>Articles</h1>
-
-<div id="articles">
-  <% @articles.each do |article| %>
-    <%= render article %>
-    <p>
-      <%= link_to "Show this article", [:admin, article] %>
-    </p>
-  <% end %>
+<h1 class="admin-title">Artigos</h1>
+<div class="main-content">
+  <div class="row">
+    <h2 class="admin-subtitle">Listagem de artigos</h2>
+    <div class="buttons">
+      <%= link_to new_admin_article_path, class: "button small" do %>
+        <%= image_tag "icons/white/add.svg", alt: "add" %>
+        Adicionar novo artigo
+      <% end %>
+    </div>
+  </div>
+  <div class="row">
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Data</th>
+          <th>Categoria</th>
+          <th>Nome</th>
+          <th>Ações</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @articles.each do |article| %>
+          <%= render article, show_view_button: true %>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
 </div>
-
-<%= link_to "New article", new_admin_article_path %>
