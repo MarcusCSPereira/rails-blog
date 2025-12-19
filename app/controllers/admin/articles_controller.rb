@@ -1,10 +1,7 @@
 # frozen_string_literal: true
 
 module Admin
-  class ArticlesController < ApplicationController
-    layout "admin_users"
-
-    before_action :authenticate_admin_user!
+  class ArticlesController < AdminController
     before_action :set_article, only: [:show, :edit, :update, :destroy, :destroy_cover_image]
 
     # GET /articles or /articles.json
@@ -32,7 +29,7 @@ module Admin
 
       respond_to do |format|
         if @article.save
-          format.html { redirect_to(admin_article_path(@article), notice: "Article was successfully created.") }
+          format.html { redirect_to(admin_article_path(@article), notice: t("controllers.admin.articles.create")) }
           format.json { render(:show, status: :created, location: admin_article_path(@article)) }
         else
           format.html { render(:new, status: :unprocessable_entity) }
@@ -45,7 +42,7 @@ module Admin
     def update
       respond_to do |format|
         if @article.update(article_params)
-          format.html { redirect_to(admin_article_path(@article), notice: "Article was successfully updated.", status: :see_other) }
+          format.html { redirect_to(admin_article_path(@article), notice: t("controllers.admin.articles.update"), status: :see_other) }
           format.json { render(:show, status: :ok, location: admin_article_path(@article)) }
         else
           format.html { render(:edit, status: :unprocessable_entity) }
@@ -59,7 +56,7 @@ module Admin
       @article.destroy!
 
       respond_to do |format|
-        format.html { redirect_to(admin_articles_path, notice: "Article was successfully destroyed.", status: :see_other) }
+        format.html { redirect_to(admin_articles_path, notice: t("controllers.admin.articles.destroy"), status: :see_other) }
         format.json { head(:no_content) }
       end
     end

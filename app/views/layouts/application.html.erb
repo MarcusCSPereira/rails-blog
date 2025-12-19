@@ -30,6 +30,7 @@
 
     <%# Includes all stylesheet files in app/assets/stylesheets %>
     <%= stylesheet_link_tag :app, "data-turbo-track": "reload" %>
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
     <%= javascript_importmap_tags %>
   </head>
 
@@ -42,6 +43,7 @@
     <%= javascript_include_tag "slick/slick.min.js" %>
     <%= javascript_include_tag "menu.js" %>
     <%= javascript_include_tag "posts-grid.js" %>
-    
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+    <%= render "layouts/shared/toastify_flash" %>
   </body>
 </html>

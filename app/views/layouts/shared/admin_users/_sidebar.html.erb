@@ -18,12 +18,12 @@
       </div>
       <div class="row">
         <nav class="menu">
-          <a href="./posts.html" class="active">
+          <%= link_to admin_articles_path, class: current_page?(admin_articles_path) ? "active" : "" do %>
             <div class="icon">
               <%= image_tag "icons/white/posts.svg", alt: "posts" %>
             </div>
             <label for="#">Posts</label>
-          </a>
+          <% end %>
           <a href="#">
             <div class="icon">
               <%= image_tag "icons/white/categories.svg", alt: "categories" %>

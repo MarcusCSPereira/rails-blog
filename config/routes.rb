@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   devise_for :admin_users
 
   namespace :admin do
+    get "/" => "dashboards#index"
     resources :articles do
       member do
         delete :destroy_cover_image
@@ -24,6 +25,4 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   root "welcome#index"
-
-  get "admin" => "admin/articles#index", as: :admin
 end
