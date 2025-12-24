@@ -8,9 +8,9 @@
         </a>
       </div>
       <div class="row center">
-        <a href="./dashboard.html" class="logo">
-        <%= image_tag "logo.svg", alt: "Logo Ruby Blog" %>
-        </a>
+        <%= link_to admin_path, class: "logo" do %>
+          <%= image_tag "logo.svg", alt: "Logo Ruby Blog" %>
+        <% end %>
       </div>
       <div class="row center column">
         <h3 class="user-name"><%= current_admin_user.email %></h3>

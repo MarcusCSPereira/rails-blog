@@ -1,11 +1,17 @@
-<% content_for :title, "New article" %>
+<% content_for :title, "Posts - Cadastro" %>
 
-<h1>New article</h1>
+<%= link_to "Artigos", admin_articles_path, class: "admin-title" %>
+
+<div class="main-content">
+  <div class="row">
+    <h2 class="admin-subtitle">Cadastro de artigo</h2>
+    <div class="buttons">
+      <a href="#" class="button small", onclick="document.forms['article-form'].submit()">
+        <%= image_tag "icons/white/save.svg", alt: "save" %>
+        Salvar artigo
+      </a>
+    </div>
+  </div>
+</div>
 
 <%= render "form", article: @article %>
-
-<br>
-
-<div>
-  <%= link_to "Back to articles", admin_articles_path %>
-</div>

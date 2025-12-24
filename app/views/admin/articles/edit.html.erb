@@ -1,12 +1,17 @@
 <% content_for :title, "Editing article" %>
 
-<h1>Editing article</h1>
+<%= link_to "Editar Artigo", admin_articles_path, class: "admin-title" %>
+
+<div class="main-content">
+  <div class="row">
+    <h2 class="admin-subtitle">Editar artigo</h2>
+    <div class="buttons">
+      <a href="#" class="button small", onclick="document.forms['article-form'].submit()">
+        <%= image_tag "icons/white/save.svg", alt: "save" %>
+        Atualizar artigo
+      </a>
+    </div>
+  </div>
+</div>
 
 <%= render "form", article: @article %>
-
-<br>
-
-<div>
-  <%= link_to "Show this article", [:admin, @article] %> |
-  <%= link_to "Back to articles", admin_articles_path %>
-</div>

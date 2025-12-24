@@ -22,11 +22,50 @@
     background-color: darken($color-primary, $animation-hover-percent);
   }
 
-  &:active {
+  &:active { 
     background-color: darken($color-primary, $animation-active-percent);
   }
 
   @include bp-medium() {
+    font-size: $element-small-font-size;
+  }
+}
+
+input[type="file"]::file-selector-button,
+input[type="file"]::-webkit-file-upload-button {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  -ms-appearance: none;
+  -o-appearance: none;
+  border: 0;
+  appearance: none;
+  display: inline-flex;
+  font-weight: $font-weight-bolder;
+  background-color: $color-primary;
+  color: $color-primary-contrast;
+  border-radius: $radius;
+  padding: $element-padding ($element-padding * 2);
+  font-size: $element-font-size;
+  transition: background-color $animation-transition;
+  cursor: pointer;
+  justify-content: center;
+  align-items: center;
+  gap: $element-padding;
+}
+
+input[type="file"]::file-selector-button:hover,
+input[type="file"]::-webkit-file-upload-button:hover {
+  background-color: darken($color-primary, $animation-hover-percent);
+}
+
+input[type="file"]::file-selector-button:active,
+input[type="file"]::-webkit-file-upload-button:active {
+  background-color: darken($color-primary, $animation-active-percent);
+}
+
+@include bp-medium() {
+  input[type="file"]::file-selector-button,
+  input[type="file"]::-webkit-file-upload-button {
     font-size: $element-small-font-size;
   }
 }
@@ -63,6 +102,16 @@
 .button.small {
   padding: $element-small-padding ($element-small-padding * 2);
   font-size: $element-small-font-size;
+}
+
+.button.full {
+  width: 100%;
+}
+
+form.full {
+  width: 100%;
+  margin-left: 10px;
+  margin-right: 10px;
 }
 
 .button.google,

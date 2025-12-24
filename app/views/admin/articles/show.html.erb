@@ -1,10 +1,9 @@
-<p style="color: green"><%= notice %></p>
+<%= link_to "Artigos", admin_articles_path, class: "admin-title" %>
 
-<%= render @article, show_view_button: false %>
-
-<div>
-  <%= link_to "Edit this article", edit_admin_article_path(@article), class: "btn btn-primary" %> |
-  <%= link_to "Back to articles", admin_articles_path %>
-
-  <%= button_to "Destroy this article", [:admin, @article], method: :delete %>
+<div class="main-content">
+  <div class="row">
+    <h2 class="admin-subtitle">Visualizar artigo</h2>
+  </div>
 </div>
+
+<%= render "form", article: @article%>
