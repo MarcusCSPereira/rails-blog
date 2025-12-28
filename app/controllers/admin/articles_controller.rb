@@ -3,10 +3,11 @@
 module Admin
   class ArticlesController < AdminController
     before_action :set_article, only: [:show, :edit, :update, :destroy, :destroy_cover_image]
+    before_action :set_categories, only: [:new, :edit, :show]
 
     # GET /articles or /articles.json
     def index
-      @articles = Article.all
+      @articles = Article.all.includes(:category)
     end
 
     # GET /articles/1 or /articles/1.json
@@ -75,9 +76,13 @@ module Admin
       @article = Article.friendly.find(params.expect(:id))
     end
 
+    def set_categories
+      @categories = Category.all
+    end
+
     # Only allow a list of trusted parameters through.
     def article_params
-      params.expect(article: [:title, :body]).permit(:title, :body, :cover_image)
+      params.require(:article).permit(:title, :body, :cover_image, :category_id)
     end
   end
 end

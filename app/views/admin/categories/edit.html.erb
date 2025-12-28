@@ -1,0 +1,17 @@
+<% content_for :title, "Editing category" %>
+
+<%= link_to "Editar Categoria", admin_categories_path, class: "admin-title" %>
+
+<div class="main-content">
+  <div class="row">
+    <h2 class="admin-subtitle">Editar categoria</h2>
+    <div class="buttons">
+      <a href="#" class="button small", onclick="document.forms['category-form'].submit()">
+        <%= image_tag "icons/white/save.svg", alt: "save" %>
+        Atualizar categoria
+      </a>
+    </div>
+  </div>
+</div>
+
+<%= render "form", category: @category %>

@@ -1,0 +1,12 @@
+<div class="row">
+  <%= form_with(model: [:admin, category], class: "form", id: "category-form") do |form| %>
+      <div class="input-row">
+        <div class="input-container">
+          <%= form.label :name, class: "label" %>
+          <%= form.text_field :name, placeholder: "Digite aqui o nome da categoria", class: "input", disabled: params[:action] == "show" %>
+        </div>
+      </div>
+    <%= button_to "Apagar categoria", [:admin, @category], method: :delete, class: "button small full", form_class: "full", data: {turbo: false} if params[:action] == "show" %>
+    <%= form.submit style: "display: none" %>
+  <% end %>
+</div>

@@ -1,0 +1,22 @@
+<div id="<%= dom_id category %>">
+  <tr>
+    <td><%= l(category.created_at, format: :only_date) %></td>
+    <td><%= category.name %></td>
+    <td>
+      <div class="icons">
+        <%= link_to admin_category_path(category), title: "Visualizar", alt: "eye" do %>
+          <%= image_tag "icons/gray/eye.svg"%>
+        <% end %>
+  
+        <%= link_to edit_admin_category_path(category), alt: "edit" do %>
+          <%= image_tag "icons/gray/edit.svg" %>
+        <% end %>
+
+        <%= button_to [:admin, category], method: :delete, data: { turbo: "false" }, alt: "close", class: "button clean" do %>
+          <%= image_tag "icons/gray/close.svg" %>
+        <% end %>
+        
+      </div>
+    </td>
+  </tr>
+</div>

@@ -1,0 +1,28 @@
+<h1 class="admin-title">Categorias</h1>
+<div class="main-content">
+  <div class="row">
+    <h2 class="admin-subtitle">Listagem de categorias</h2>
+    <div class="buttons">
+      <%= link_to new_admin_category_path, class: "button small" do %>
+        <%= image_tag "icons/white/add.svg", alt: "add" %>
+        Adicionar nova categoria
+      <% end %>
+    </div>
+  </div>
+  <div class="row">
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Data de criação</th>
+          <th>Nome</th>
+          <th>Ações</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @categories.each do |category| %>
+          <%= render category, show_view_button: true %>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>

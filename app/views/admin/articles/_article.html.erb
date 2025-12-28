@@ -1,7 +1,7 @@
 <div id="<%= dom_id article %>">
   <tr>
     <td><%= l(article.created_at, format: :only_date) %></td>
-    <td>Frontend</td>
+    <td><%= article.category&.name || "Sem categoria" %></td>
     <td><%= article.title %></td>
     <td>
       <div class="icons">
