@@ -1,6 +1,6 @@
 <header class="section header-section">
   <div class="container">
-    <%= link_to admin_user_session_path, class: "logo" do %>
+    <%= link_to root_path, class: "logo" do %>
       <%= image_tag "logo.svg", alt: "Logo Ruby on Rails Club" %>
     <% end %>
     <nav class="menu" id="menu">
@@ -8,14 +8,14 @@
         <%= image_tag "icons/white/close.svg", alt: "Close Button" %>
       </a>
       <ul>
-        <li><a href="index.html">Início</a></li>
+        <li><%= link_to "Início", root_path %></li>
         <li><a href="#">Categorias</a></li>
         <li><a href="#">Cursos</a></li>
         <li><a href="#">Contato</a></li>
       </ul>
       <div class="mobile-actions">
         <div>
-          <a href="login-entrar.html" class="button secondary">Entrar</a>
+          <%= link_to "Entrar", admin_user_session_path, class: "button secondary" %>
         </div>
       </div>
     </nav>
@@ -23,7 +23,7 @@
       <%= image_tag "icons/red/menu.svg", alt: "Open Menu" %>
     </a>
     <div class="actions">
-      <a href="login-entrar.html" class="button">Entrar</a>
+      <%= link_to "Entrar", admin_user_session_path, class: "button" %>
     </div>
   </div>
 </header>

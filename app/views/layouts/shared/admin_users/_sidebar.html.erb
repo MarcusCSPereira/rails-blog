@@ -30,6 +30,12 @@
             </div>
             <label for="#">Categorias</label>
           <% end %>
+          <%= link_to admin_authors_path, class: current_page?(admin_authors_path) ? "active" : "" do %>
+            <div class="icon">
+              <%= image_tag "icons/white/author.svg", alt: "authors" %>
+            </div>
+            <label for="#">Autores</label>
+          <% end %>
         </nav>
       </div>
     </aside>

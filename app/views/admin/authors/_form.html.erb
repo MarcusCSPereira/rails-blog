@@ -1,0 +1,66 @@
+<div class="row">
+  <%= form_with(model: [:admin, author], class: "form", id: "author-form") do |form| %>
+      <div class="input-row">
+        <div class="input-container">
+          <%= form.label :name, class: "label" %>
+          <%= form.text_field :name, placeholder: "Digite aqui o nome do Autor", class: "input", disabled: params[:action] == "show" %>
+        </div>
+      </div>
+      <div class="input-row">
+        <div class="input-container">
+          <%= form.label :description, class: "label" %>
+          <%= form.text_area :description, rows: 15, placeholder: "Digite aqui a descrição do perfil desse autor", class: "textarea", disabled: params[:action] == "show" %>
+        </div>
+      </div>
+      <div class="input-row">
+        <div class="input-container">
+          <%= form.label :facebook_profile_url, class: "label" %>
+          <%= form.text_field :facebook_profile_url, placeholder: "Digite aqui a url para o perfil do facebook desse autor", class: "input", disabled: params[:action] == "show" %>
+        </div>
+      </div>
+      <div class="input-row">
+        <div class="input-container">
+          <%= form.label :instagram_profile_url, class: "label" %>
+          <%= form.text_field :instagram_profile_url, placeholder: "Digite aqui a url para o perfil do instagram autor", class: "input", disabled: params[:action] == "show" %>
+        </div>
+      </div>
+      <div class="input-row">
+        <div class="input-container">
+          <%= form.label :linkedin_profile_url, class: "label" %>
+          <%= form.text_field :linkedin_profile_url, placeholder: "Digite aqui a url para o perfil do linkedin desse autor", class: "input", disabled: params[:action] == "show" %>
+        </div>
+      </div>
+      <div class="input-row">
+        <div class="input-container">
+          <%= form.label :twitter_profile_url, class: "label" %>
+          <%= form.text_field :twitter_profile_url, placeholder: "Digite aqui a url para o perfil do twitter desse autor", class: "input", disabled: params[:action] == "show" %>
+        </div>
+      </div>
+      <div class="input-row">
+        <div class="input-container">
+          <%= form.label :youtube_profile_url, class: "label" %>
+          <%= form.text_field :youtube_profile_url, placeholder: "Digite aqui a url para o perfil do youtube desse autor", class: "input", disabled: params[:action] == "show" %>
+        </div>
+      </div>
+
+      <div>
+        <%= form.label :avatar_image, style: "display: block", class: "label-input-file" %>
+        <%= (form.file_field :avatar_image, style: "margin-bottom: 8px;" ) if params[:action] != "show" %>
+        <div id= <%= dom_id(author) %> style="display: block;">
+          <% if author.avatar_image.attached? %>
+            <div style="display: block; margin-bottom: 8px;">
+              <%= image_tag author.avatar_image.variant(:thumb), style: "display: block; max-width: 100%;" %>
+            </div>
+            <% if params[:action] != "show" %>
+              <div style="display: block; clear: both; width: 100%;">
+                <%= link_to "Remover imagem",destroy_avatar_image_admin_author_path(author), style: "display: inline-block;", data: { "turbo-confirm": "Tem certeza que deseja remover a imagem?", "turbo-method": :delete } %>
+              </div>
+            <% end %>
+          <% end %>
+        </div>
+      </div>
+
+    <%= button_to "Apagar Autor", [:admin, @author], method: :delete, class: "button small full", form_class: "full", data: {turbo: false} if params[:action] == "show" %>
+    <%= form.submit style: "display: none" %>
+  <% end %>
+</div>

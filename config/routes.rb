@@ -5,14 +5,26 @@ Rails.application.routes.draw do
   devise_for :admin_users
 
   namespace :admin do
+    get "authors/index"
     get "/" => "dashboards#index"
     resources :articles do
       member do
         delete :destroy_cover_image
       end
     end
-    resources :categories
+    resources :categories do
+      member do
+        delete :destroy_cover_image
+      end
+    end
+    resources :authors do
+      member do
+        delete :destroy_avatar_image
+      end
+    end
   end
+
+  resources :articles, only: [:show]
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 

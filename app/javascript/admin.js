@@ -34,3 +34,18 @@ function adminMenu() {
 		});
 	}
 }
+
+function updateFileName(input, displayId) {
+	var fileNameDisplay = document.getElementById(displayId);
+	if (input.files && input.files.length > 0) {
+		var fileName = input.files[0].name;
+		if (fileNameDisplay) {
+			fileNameDisplay.textContent = "Arquivo selecionado: " + fileName;
+			fileNameDisplay.style.display = "block";
+		}
+	} else {
+		if (fileNameDisplay) {
+			fileNameDisplay.style.display = "none";
+		}
+	}
+}

@@ -1,0 +1,22 @@
+<div id="<%= dom_id author %>">
+  <tr>
+    <td><%= l(author.created_at, format: :only_date) %></td>
+    <td><%= author.name %></td>
+    <td>
+      <div class="icons">
+        <%= link_to admin_author_path(author), title: "Visualizar", alt: "eye" do %>
+          <%= image_tag "icons/gray/eye.svg"%>
+        <% end %>
+  
+        <%= link_to edit_admin_author_path(author), alt: "edit" do %>
+          <%= image_tag "icons/gray/edit.svg" %>
+        <% end %>
+
+        <%= button_to [:admin, author], method: :delete, data: { turbo: "false" }, alt: "close", class: "button clean" do %>
+          <%= image_tag "icons/gray/close.svg" %>
+        <% end %>
+        
+      </div>
+    </td>
+  </tr>
+</div>

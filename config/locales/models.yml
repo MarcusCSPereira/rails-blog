@@ -7,6 +7,12 @@ pt-BR:
       admin_user:
         one: Administrador
         other: Administradores
+      category:
+        one: Categoria
+        other: Categorias
+      author:
+        one: Autor
+        other: Autores
     attributes:
       article:
         id: Identificador
@@ -24,3 +30,21 @@ pt-BR:
         remember_created_at: Lembrar criado em
         created_at: Criado em
         updated_at: Atualizado em
+      category:
+        id: Identificador
+        name: Nome 
+        description: Descrição
+        created_at: Criado em
+        updated_at: Atualizado em
+      author:
+        id: Identificador
+        name: Nome
+        description: Descrição
+        facebook_profile_url: URL do Facebook
+        instagram_profile_url: URL do Instagram
+        linkedin_profile_url: URL do LinkedIn
+        twitter_profile_url: URL do Twitter
+        youtube_profile_url: URL do YouTube
+        created_at: Criado em
+        updated_at: Atualizado em
+        avatar_image: Imagem do Avatar

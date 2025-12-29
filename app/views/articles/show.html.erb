@@ -1,0 +1,214 @@
+<section class="section posts-detail-title-section">
+		<div class="container">
+			<h1 class="post-detail-title"><%= @article.title %></h1>
+		</div>
+	</section>
+
+	<section class="section post-detail-default-section post-detail-image-section">
+		<div class="container">
+			<div class="primary-content">
+				<div class="post-detail-image">
+          <%= image_tag(cover_image_fallback(@article, :medium), alt: @article.title) %>
+				</div>
+			</div>
+			<div class="secondary-content">
+				<a href="#" class="post-detail-image-ad">
+					<%= image_tag "ad/image-ad.jpg", alt: "Image Ad" %>
+				</a>
+				<div class="share-post">
+					<div class="share-post-title">Compartilhar post</div>
+					<div class="socials">
+          <%= link_to "https://www.facebook.com/sharer/sharer.php?u=#{article_url(@article)}", target: "_blank" do %>
+            <%= image_tag "icons/red/facebook.svg", alt: "Facebook" %>
+          <% end %>
+          <%= link_to "https://twitter.com/intent/tweet?text=#{@article.title}&url=#{article_url(@article)}", target: "_blank" do %>
+            <%= image_tag "icons/red/twitter.svg", alt: "Twitter" %>
+          <% end %>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<section class="section post-detail-default-section author-section">
+		<div class="container">
+			<div class="primary-content">
+				<div class="author">
+					<div class="image-container">
+            <%= image_tag avatar_image_fallback(@article.author), alt: @article.author.name %>
+					</div>
+					<div class="text-container">
+						<div class="label">Autor</div>
+						<div class="description"><%= @article.author.name %></div>
+					</div>
+				</div>
+				<div class="category text-container">
+					<div class="label">Categoria</div>
+					<div class="description"><%= @article.category.name %></div>
+				</div>
+				<div class="comments text-container">
+					<div class="label">Comentários</div>
+					<div class="description">15</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+
+	<section class="section post-detail-default-section post-content-section">
+		<div class="container">
+			<div class="primary-content">
+				<div class="post-detail-content">
+					<%= @article.body %>
+				</div>
+				<div class="post-detail-author-bio">
+					<div class="image">
+						<%= image_tag avatar_image_fallback(@article.author), alt: @article.author.name %>
+						<div class="text-mobile">
+							<div class="label">sobre o autor</div>
+							<div class="author-name"><%= @article.author.name %></div>
+						</div>
+					</div>
+					<div class="text">
+						<div class="label">sobre o autor</div>
+						<div class="author-name"><%= @article.author.name %></div>
+						<div class="author-description">
+							<%= @article.author.description %>
+						</div>
+						<div class="author-social">
+							<a href="<%= @article.author.facebook_profile_url %>" target="_blank"><%= image_tag "icons/gray/facebook.svg", alt: "Facebook" %></a>
+							<a href="<%= @article.author.instagram_profile_url %>" target="_blank"><%= image_tag "icons/gray/instagram.svg", alt: "Instagram" %></a>
+							<a href="<%= @article.author.twitter_profile_url %>" target="_blank"><%= image_tag "icons/gray/twitter.svg", alt: "Twitter" %></a>
+							<a href="<%= @article.author.linkedin_profile_url %>" target="_blank"><%= image_tag "icons/gray/linkedin.svg", alt: "Linkedin" %></a>
+							<a href="<%= @article.author.youtube_profile_url %>" target="_blank"><%= image_tag "icons/gray/youtube.svg", alt: "Youtube" %></a>
+						</div>
+					</div>
+				</div>
+				<div class="post-detail-comment">
+					<div class="comment-title-container">
+						<div class="comment-title">Comentários</div>
+						<div class="comment-actions">
+							<div class="label">ordenar por: </div>
+							<select class="select clean small">
+								<option value="1">Últimos comentários</option>
+								<option value="2">Mais recentes</option>
+							</select>
+						</div>
+					</div>
+					<div class="comment-form-container">
+						<textarea class="textarea darker full double-padding"
+							placeholder="Insira seu comentário aqui..."></textarea>
+						<button class="button small">Publicar</button>
+					</div>
+					<div class="post-detail-comments-list">
+						<div class="post-detail-comment-item">
+							<div class="author-row">
+								<div>
+									<div class="avatar">
+										<%= image_tag "avatar/man-1.svg", alt: "Man 1" %>
+									</div>
+									<div class="name">Marcio Junior</div>
+								</div>
+								<div>
+									<div class="date">30min atrás</div>
+								</div>
+							</div>
+							<div class="description-row">
+								<p>Wanted to ask if you’re available for a portrait shoot next week to ask if you’re available for a
+									portrait shoot next week to ask if you’re available for a portrait shoot next week</p>
+							</div>
+							<div class="actions-row">
+								<a href="#" class="like">6</a>
+								<a href="#" class="deslike">4</a>
+								<a href="#" class="share"></a>
+							</div>
+						</div>
+						<div class="post-detail-comment-item">
+							<div class="author-row">
+								<div>
+									<div class="avatar">
+										<%= image_tag "avatar/woman-1.svg", alt: "Woman 1" %>
+									</div>
+									<div class="name">Ana Cristina</div>
+								</div>
+								<div>
+									<div class="date">1hr atrás</div>
+								</div>
+							</div>
+							<div class="description-row">
+								<p>Wanted to ask if you’re available for a portrait shoot next week to ask if you’re available for a
+									portrait shoot next week to ask if you’re available for a portrait shoot next week</p>
+							</div>
+							<div class="actions-row">
+								<a href="#" class="like active">6</a>
+								<a href="#" class="deslike">4</a>
+								<a href="#" class="share"></a>
+							</div>
+						</div>
+						<div class="post-detail-comment-item">
+							<div class="author-row">
+								<div>
+									<div class="avatar">
+										<%= image_tag "avatar/man-2.svg", alt: "Man 2" %>
+									</div>
+									<div class="name">Igor Henrique</div>
+								</div>
+								<div>
+									<div class="date">2 dias atrás</div>
+								</div>
+							</div>
+							<div class="description-row">
+								<p>Wanted to ask if you’re available for a portrait shoot next week to ask if you’re available for a
+									portrait shoot next week to ask if you’re available for a portrait shoot next week</p>
+							</div>
+							<div class="actions-row">
+								<a href="#" class="like">6</a>
+								<a href="#" class="deslike active">4</a>
+								<a href="#" class="share"></a>
+							</div>
+						</div>
+						<div class="post-detail-comment-item">
+							<div class="author-row">
+								<div>
+									<div class="avatar">
+										<%= image_tag "avatar/woman-2.svg", alt: "Woman 2" %>
+									</div>
+									<div class="name">Maria Lúcia</div>
+								</div>
+								<div>
+									<div class="date">30/09/2022</div>
+								</div>
+							</div>
+							<div class="description-row">
+								<p>Wanted to ask if you’re available for a portrait shoot next week to ask if you’re available for a
+									portrait shoot next week to ask if you’re available for a portrait shoot next week</p>
+							</div>
+							<div class="actions-row">
+								<a href="#" class="like">6</a>
+								<a href="#" class="deslike">4</a>
+								<a href="#" class="share"></a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="secondary-content">
+				<a href="#" class="post-content-ad">
+					<%= image_tag "ad/post-content-ad.jpg", alt: "Post Content Ad" %>
+				</a>
+				<div class="post-detail-other-posts">
+					<div class="other-posts-title">Outras publicações</div>
+          <% @other_articles.each do |article| %>
+            <%= link_to article_path(article), class: "post-resume" do %>
+              <%= image_tag cover_image_fallback(article), class: "post-resume-image", alt: article.title %>
+              <h4 class="post-resume-title"><%= article.title %></h4>
+            <% end %>
+          <% end %>
+				</div>
+				<a href="#" class="post-content-ad">
+					<%= image_tag "ad/post-content-footer-ad.jpg", alt: "Post Content Footer Ad" %>
+				</a>
+			</div>
+		</div>
+		</div>
+</section>
