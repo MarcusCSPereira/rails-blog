@@ -4,7 +4,7 @@ class ArticlesController < PublicController
   before_action :set_article, only: [:show]
 
   def show
-    @other_articles = Article.includes(:author, :category)
+    @other_articles = Article.includes(:author, :category, comments: :user)
       .with_attached_cover_image
       .where.not(id: @article.id)
       .order(created_at: :desc)
@@ -14,7 +14,7 @@ class ArticlesController < PublicController
   private
 
   def set_article
-    @article = Article.includes(:author, :category)
+    @article = Article.includes(:author, :category, comments: :user)
       .with_attached_cover_image
       .friendly.find(params.expect(:id))
   end

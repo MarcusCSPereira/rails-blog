@@ -23,6 +23,16 @@ namespace :dev do
     show_spinner("Adding authors to the database") { add_authors }
   end
 
+  desc "Add the users to the database"
+  task add_users: :environment do
+    show_spinner("Adding users to the database") { add_users }
+  end
+
+  desc "Add the comments to the database"
+  task add_comments: :environment do
+    show_spinner("Adding comments to the database") { add_comments }
+  end
+
   def show_spinner(msg_start, msg_end = "Done!")
     spinner = TTY::Spinner.new("[:spinner] #{msg_start}", format: :classic)
     spinner.auto_spin
@@ -65,6 +75,26 @@ namespace :dev do
     end
   end
 
+  def add_users
+    30.times do
+      User.create!(
+        email: Faker::Internet.email,
+        password: ENV["DEFAULT_PASSWORD"],
+        password_confirmation: ENV["DEFAULT_PASSWORD"],
+      )
+    end
+  end
+
+  def add_comments
+    100.times do
+      Comment.create!(
+        body: Faker::Lorem.paragraph(sentence_count: rand(5..10)),
+        user: User.all.sample,
+        article: Article.all.sample,
+      )
+    end
+  end
+
   def reset_db
     # Termina todas as conexões ativas do banco de dados
     begin
@@ -86,5 +116,7 @@ namespace :dev do
     Rake::Task["dev:add_categories"].invoke
     Rake::Task["dev:add_authors"].invoke
     Rake::Task["dev:add_articles"].invoke
+    Rake::Task["dev:add_users"].invoke
+    Rake::Task["dev:add_comments"].invoke
   end
 end
