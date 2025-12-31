@@ -1,6 +1,18 @@
 # frozen_string_literal: true
 
-require "tty-spinner"
+# Require tty-spinner apenas se disponível (não está no grupo production)
+begin
+  require "tty-spinner"
+rescue LoadError
+  # tty-spinner não disponível em produção, usar fallback simples
+  module TTY
+    class Spinner
+      def initialize(msg, format: nil) = @msg = msg
+      def auto_spin; end
+      def success(msg) = puts("#{@msg} #{msg}")
+    end
+  end
+end
 
 namespace :dev do
   desc "Add the articles to the database"

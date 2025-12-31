@@ -1,0 +1,84 @@
+2025-12-31T14:54:47.846400750Z [inf]  scheduling build on Metal builder "builder-wkkdbn"
+2025-12-31T14:54:54.556823069Z [inf]  scheduling build on Metal builder "builder-wkkdbn"
+2025-12-31T14:54:55.729648043Z [inf]  [snapshot] received sha256:57f16f40c78744f68f7cd90a222368df2ea3aaf1c733e55826924491532855a9 md5:eb8fef2ad3c875590a9c0b7b609efc4e
+2025-12-31T14:54:55.729823757Z [inf]  receiving snapshot
+2025-12-31T14:54:55.836968305Z [dbg]  found 'Dockerfile' at 'Dockerfile'
+2025-12-31T14:54:55.837174755Z [inf]  analyzing snapshot
+2025-12-31T14:54:56.153695251Z [inf]  uploading snapshot
+2025-12-31T14:55:02.208133500Z [inf]  fetched snapshot sha256:57f16f40c78744f68f7cd90a222368df2ea3aaf1c733e55826924491532855a9 (12 MB bytes)
+2025-12-31T14:55:02.208273169Z [inf]  fetching snapshot
+2025-12-31T14:55:02.610616803Z [inf]  unpacking archive
+2025-12-31T14:55:03.150500772Z [inf]  [internal] load build definition from Dockerfile
+2025-12-31T14:55:03.150521302Z [inf]  [internal] load build definition from Dockerfile
+2025-12-31T14:55:03.150536565Z [inf]  [internal] load build definition from Dockerfile
+2025-12-31T14:55:03.249571216Z [inf]  [internal] load build definition from Dockerfile
+2025-12-31T14:55:03.285294435Z [inf]  resolve image config for docker-image://docker.io/docker/dockerfile:1
+2025-12-31T14:55:03.782592338Z [inf]  resolve image config for docker-image://docker.io/docker/dockerfile:1
+2025-12-31T14:55:03.782801792Z [inf]  docker-image://docker.io/docker/dockerfile:1@sha256:b6afd42430b15f2d2a4c5a02b919e98a525b785b1aaff16747d2f623364e39b6
+2025-12-31T14:55:03.782809533Z [inf]  docker-image://docker.io/docker/dockerfile:1@sha256:b6afd42430b15f2d2a4c5a02b919e98a525b785b1aaff16747d2f623364e39b6
+2025-12-31T14:55:03.794749959Z [inf]  docker-image://docker.io/docker/dockerfile:1@sha256:b6afd42430b15f2d2a4c5a02b919e98a525b785b1aaff16747d2f623364e39b6
+2025-12-31T14:55:03.795083439Z [inf]  docker-image://docker.io/docker/dockerfile:1@sha256:b6afd42430b15f2d2a4c5a02b919e98a525b785b1aaff16747d2f623364e39b6
+2025-12-31T14:55:03.976693395Z [inf]  [internal] load metadata for docker.io/library/ruby:3.4.7-slim
+2025-12-31T14:55:04.348241534Z [inf]  [internal] load metadata for docker.io/library/ruby:3.4.7-slim
+2025-12-31T14:55:04.352023929Z [inf]  [internal] load .dockerignore
+2025-12-31T14:55:04.352090218Z [inf]  [internal] load .dockerignore
+2025-12-31T14:55:04.352489277Z [inf]  [internal] load .dockerignore
+2025-12-31T14:55:04.462086046Z [inf]  [internal] load .dockerignore
+2025-12-31T14:55:04.603010858Z [inf]  [stage-2 2/3] COPY --chown=rails:rails --from=build /usr/local/bundle /usr/local/bundle
+2025-12-31T14:55:04.603016146Z [inf]  [build 6/6] RUN SECRET_KEY_BASE_DUMMY=1 ./bin/rails assets:precompile
+2025-12-31T14:55:04.603016907Z [inf]  [build 5/6] RUN bundle exec bootsnap precompile -j 1 app/ lib/
+2025-12-31T14:55:04.603017468Z [inf]  [build 4/6] COPY . .
+2025-12-31T14:55:04.603017788Z [inf]  [build 3/6] RUN bundle install &&     rm -rf ~/.bundle/ "/usr/local/bundle"/ruby/*/cache "/usr/local/bundle"/ruby/*/bundler/gems/*/.git &&     bundle exec bootsnap precompile -j 1 --gemfile
+2025-12-31T14:55:04.603018099Z [inf]  [base 1/3] FROM docker.io/library/ruby:3.4.7-slim@sha256:93dd13e28987e373857fbda4a7f4ae99e9f7acb6fcc266035e551229974d1c89
+2025-12-31T14:55:04.603018520Z [inf]  [internal] load build context
+2025-12-31T14:55:04.603019121Z [inf]  [build 1/6] RUN apt-get update -qq &&     apt-get install --no-install-recommends -y build-essential git libpq-dev libyaml-dev pkg-config &&     rm -rf /var/lib/apt/lists /var/cache/apt/archives
+2025-12-31T14:55:04.603019671Z [inf]  [stage-2 1/3] RUN groupadd --system --gid 1000 rails &&     useradd rails --uid 1000 --gid 1000 --create-home --shell /bin/bash
+2025-12-31T14:55:04.603020062Z [inf]  [base 3/3] RUN apt-get update -qq &&     apt-get install --no-install-recommends -y curl libjemalloc2 libvips postgresql-client &&     ln -s /usr/lib/$(uname -m)-linux-gnu/libjemalloc.so.2 /usr/local/lib/libjemalloc.so &&     rm -rf /var/lib/apt/lists /var/cache/apt/archives
+2025-12-31T14:55:04.603020342Z [inf]  [base 2/3] WORKDIR /rails
+2025-12-31T14:55:04.603020723Z [inf]  [stage-2 3/3] COPY --chown=rails:rails --from=build /rails /rails
+2025-12-31T14:55:04.603021013Z [inf]  [build 2/6] COPY Gemfile Gemfile.lock vendor ./
+2025-12-31T14:55:04.603454133Z [inf]  [base 1/3] FROM docker.io/library/ruby:3.4.7-slim@sha256:93dd13e28987e373857fbda4a7f4ae99e9f7acb6fcc266035e551229974d1c89
+2025-12-31T14:55:04.603456487Z [inf]  [internal] load build context
+2025-12-31T14:55:04.603741585Z [inf]  [internal] load build context
+2025-12-31T14:55:04.623426960Z [inf]  [base 1/3] FROM docker.io/library/ruby:3.4.7-slim@sha256:93dd13e28987e373857fbda4a7f4ae99e9f7acb6fcc266035e551229974d1c89
+2025-12-31T14:55:04.624428884Z [inf]  [internal] load build context
+2025-12-31T14:55:04.624676164Z [inf]  [base 2/3] WORKDIR /rails
+2025-12-31T14:55:04.624678728Z [inf]  [base 3/3] RUN apt-get update -qq &&     apt-get install --no-install-recommends -y curl libjemalloc2 libvips postgresql-client &&     ln -s /usr/lib/$(uname -m)-linux-gnu/libjemalloc.so.2 /usr/local/lib/libjemalloc.so &&     rm -rf /var/lib/apt/lists /var/cache/apt/archives
+2025-12-31T14:55:04.624679480Z [inf]  [stage-2 1/3] RUN groupadd --system --gid 1000 rails &&     useradd rails --uid 1000 --gid 1000 --create-home --shell /bin/bash
+2025-12-31T14:55:04.647793530Z [inf]  [stage-2 1/3] RUN groupadd --system --gid 1000 rails &&     useradd rails --uid 1000 --gid 1000 --create-home --shell /bin/bash
+2025-12-31T14:55:04.842363551Z [inf]  [internal] load build context
+2025-12-31T14:55:04.892047076Z [inf]  [build 1/6] RUN apt-get update -qq &&     apt-get install --no-install-recommends -y build-essential git libpq-dev libyaml-dev pkg-config &&     rm -rf /var/lib/apt/lists /var/cache/apt/archives
+2025-12-31T14:55:04.892049560Z [inf]  [build 2/6] COPY Gemfile Gemfile.lock vendor ./
+2025-12-31T14:55:04.892050311Z [inf]  [build 3/6] RUN bundle install &&     rm -rf ~/.bundle/ "/usr/local/bundle"/ruby/*/cache "/usr/local/bundle"/ruby/*/bundler/gems/*/.git &&     bundle exec bootsnap precompile -j 1 --gemfile
+2025-12-31T14:55:04.892055389Z [inf]  [build 4/6] COPY . .
+2025-12-31T14:55:05.267961886Z [inf]  [build 4/6] COPY . .
+2025-12-31T14:55:05.311935895Z [inf]  [build 5/6] RUN bundle exec bootsnap precompile -j 1 app/ lib/
+2025-12-31T14:55:06.148175143Z [inf]  [build 5/6] RUN bundle exec bootsnap precompile -j 1 app/ lib/
+2025-12-31T14:55:06.203427873Z [inf]  [build 6/6] RUN SECRET_KEY_BASE_DUMMY=1 ./bin/rails assets:precompile
+2025-12-31T14:55:07.289313268Z [inf]  bin/rails aborted!
+
+2025-12-31T14:55:07.300835206Z [inf]  LoadError: cannot load such file -- tty-spinner (LoadError)
+/usr/local/bundle/ruby/3.4.0/gems/bootsnap-1.18.6/lib/bootsnap/load_path_cache/core_ext/kernel_require.rb:27:in 'Kernel#require'
+/usr/local/bundle/ruby/3.4.0/gems/zeitwerk-2.7.3/lib/zeitwerk/core_ext/kernel.rb:34:in 'Kernel#require'
+/rails/lib/tasks/dev.rake:3:in '<main>'
+/usr/local/bundle/ruby/3.4.0/gems/railties-8.1.1/lib/rails/engine.rb:686:in 'Kernel#load'
+/usr/local/bundle/ruby/3.4.0/gems/railties-8.1.1/lib/rails/engine.rb:686:in 'block in Rails::Engine#run_tasks_blocks'
+/usr/local/bundle/ruby/3.4.0/gems/railties-8.1.1/lib/rails/engine.rb:686:in 'Array#each'
+/usr/local/bundle/ruby/3.4.0/gems/railties-8.1.1/lib/rails/engine.rb:686:in 'Rails::Engine#run_tasks_blocks'
+/usr/local/bundle/ruby/3.4.0/gems/railties-8.1.1/lib/rails/application.rb:564:in 'Rails::Application#run_tasks_blocks'
+/usr/local/bundle/ruby/3.4.0/gems/railties-8.1.1/lib/rails/engine.rb:469:in 'Rails::Engine#load_tasks'
+/rails/Rakefile:8:in '<main>'
+/usr/local/bundle/ruby/3.4.0/gems/railties-8.1.1/lib/rails/commands/rake/rake_command.rb:43:in 'block in Rails::Command::RakeCommand.with_rake'
+/usr/local/bundle/ruby/3.4.0/gems/railties-8.1.1/lib/rails/commands/rake/rake_command.rb:41:in 'Rails::Command::RakeCommand.with_rake'
+/usr/local/bundle/ruby/3.4.0/gems/railties-8.1.1/lib/rails/commands/rake/rake_command.rb:20:in 'Rails::Command::RakeCommand.perform'
+/usr/local/bundle/ruby/3.4.0/gems/railties-8.1.1/lib/rails/command.rb:150:in 'Rails::Command.invoke_rake'
+/usr/local/bundle/ruby/3.4.0/gems/railties-8.1.1/lib/rails/command.rb:67:in 'block in Rails::Command.invoke'
+/usr/local/bundle/ruby/3.4.0/gems/railties-8.1.1/lib/rails/command.rb:143:in 'Rails::Command.with_argv'
+/usr/local/bundle/ruby/3.4.0/gems/railties-8.1.1/lib/rails/command.rb:63:in 'Rails::Command.invoke'
+/usr/local/bundle/ruby/3.4.0/gems/railties-8.1.1/lib/rails/commands.rb:18:in '<main>'
+/usr/local/bundle/ruby/3.4.0/gems/bootsnap-1.18.6/lib/bootsnap/load_path_cache/core_ext/kernel_require.rb:30:in 'Kernel#require'
+./bin/rails:4:in '<main>'
+(See full trace by running task with --trace)
+
+2025-12-31T14:55:07.422914042Z [err]  [build 6/6] RUN SECRET_KEY_BASE_DUMMY=1 ./bin/rails assets:precompile
+2025-12-31T14:55:07.451474184Z [err]  Build Failed: build daemon returned an error < failed to solve: process "/bin/sh -c SECRET_KEY_BASE_DUMMY=1 ./bin/rails assets:precompile" did not complete successfully: exit code: 1 >
