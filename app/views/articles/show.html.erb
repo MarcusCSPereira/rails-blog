@@ -19,10 +19,10 @@
         <div class="share-post-title">Compartilhar post</div>
         <div class="socials">
           <%= link_to "https://www.facebook.com/sharer/sharer.php?u=#{article_url(@article)}" do %>
-            <%= image_tag "icons/red/facebook.svg" %>
+            <%= image_tag "icons/gray/facebook.svg" %>
           <% end %>
           <%= link_to "https://twitter.com/intent/tweet?text=#{@article.title}&url=#{article_url(@article)}" do %>
-            <%= image_tag "icons/red/twitter.svg" %>
+            <%= image_tag "icons/gray/twitter.svg" %>
           <% end %>
 
           <%= link_to article_url(@article, format: :pdf), target: "_blank" do %>
@@ -139,12 +139,17 @@
                   <%= comment.body %>
                 </p>
               </div>
-               <div class="actions-row">
-                 <a href="#" class="like">6</a>
-                 <a href="#" class="deslike">4</a>
-                 <%= link_to "", "https://twitter.com/intent/tweet?text=#{comment.body}&
-                url=#{article_url(@article)}", class:"share" %>
-               </div>
+              <div class="actions-row">
+                <%= button_to like_article_comment_path(@article, comment), class:"like", form: { turbo: false } do %>
+                  <%= comment.like %>
+                <% end %>
+
+                <%= button_to dislike_article_comment_path(@article, comment), class:"deslike", form: { turbo: false } do %>
+                  <%= comment.dislike %>
+                <% end %>
+
+                <%= link_to "", "https://twitter.com/intent/tweet?text=#{comment.body}&url=#{article_url(@article)}", class:"share" %>
+              </div>
             </div>
           <% end %>
         </div>
@@ -158,7 +163,7 @@
         <div class="other-posts-title">Outras publicações</div>
         <% @other_articles.each do |other_article| %>
           <a href="#" class="post-resume">
-            <%= image_tag(cover_image_fallback(other_article, :thumb) , alt: other_article.title, class:"post-resume-image") %>
+            <%= image_tag(cover_image_fallback(other_article) , alt: other_article.title, class:"post-resume-image") %>
             <h4 class="post-resume-title"><%= other_article.title %></h4>
           </a>
         <% end %>

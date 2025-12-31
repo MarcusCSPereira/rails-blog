@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.1].define(version: 2025_12_29_231949) do
+ActiveRecord::Schema[8.1].define(version: 2025_12_31_020948) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
   enable_extension "pgcrypto"
@@ -88,10 +88,23 @@ ActiveRecord::Schema[8.1].define(version: 2025_12_29_231949) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "comment_like_dislikes", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+    t.string "action_type"
+    t.uuid "comment_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.uuid "user_id", null: false
+    t.index ["comment_id", "user_id"], name: "index_comment_like_dislikes_on_comment_id_and_user_id", unique: true
+    t.index ["comment_id"], name: "index_comment_like_dislikes_on_comment_id"
+    t.index ["user_id"], name: "index_comment_like_dislikes_on_user_id"
+  end
+
   create_table "comments", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
     t.uuid "article_id", null: false
     t.text "body"
     t.datetime "created_at", null: false
+    t.integer "dislike", default: 0
+    t.integer "like", default: 0
     t.datetime "updated_at", null: false
     t.uuid "user_id", null: false
     t.index ["article_id"], name: "index_comments_on_article_id"
@@ -125,6 +138,8 @@ ActiveRecord::Schema[8.1].define(version: 2025_12_29_231949) do
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "articles", "authors"
   add_foreign_key "articles", "categories"
+  add_foreign_key "comment_like_dislikes", "comments"
+  add_foreign_key "comment_like_dislikes", "users"
   add_foreign_key "comments", "articles"
   add_foreign_key "comments", "users"
 end

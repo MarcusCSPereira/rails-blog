@@ -25,7 +25,12 @@ Rails.application.routes.draw do
   end
 
   resources :articles, only: [:show] do
-    resources :comments, only: [:create]
+    resources :comments, only: [:create] do
+      member do
+        post :like
+        post :dislike
+      end
+    end
   end
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
