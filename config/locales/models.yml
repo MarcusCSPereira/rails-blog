@@ -48,3 +48,10 @@ pt-BR:
         created_at: Criado em
         updated_at: Atualizado em
         avatar_image: Imagem do Avatar
+      comment:
+        id: Identificador
+        body: Comentário
+        created_at: Criado em
+        updated_at: Atualizado em
+        user: Usuário
+        article: Artigo

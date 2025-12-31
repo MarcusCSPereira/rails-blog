@@ -24,7 +24,9 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :articles, only: [:show]
+  resources :articles, only: [:show] do
+    resources :comments, only: [:create]
+  end
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 

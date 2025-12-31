@@ -1,34 +1,56 @@
-<% if notice %>
-  <div data-flash-notice="<%= notice %>" style="display: none;"></div>
+<% flash.each do |type, message| %>
+  <div class="flash-message" data-flash-<%= type %>="<%= message %>" style="display: none;"></div>
 <% end %>
 
 <script>
-  function showToastify(message) {
+  // Configuração de estilos para cada tipo de notificação
+  const toastifyStyles = {
+    notice: {
+      background: "linear-gradient(to right, #00b09b, #96c93d)"
+    },
+    alert: {
+      background: "linear-gradient(to right, #ff6b6b, #ee5a6f)"
+    },
+    // Adicione novos tipos aqui facilmente:
+    // warning: {
+    //   background: "linear-gradient(to right, #ffa726, #fb8c00)"
+    // },
+    // info: {
+    //   background: "linear-gradient(to right, #42a5f5, #1e88e5)"
+    // }
+  };
+
+  function showToastify(message, type = 'notice') {
     if (typeof Toastify !== 'undefined' && message) {
+      const style = toastifyStyles[type] || toastifyStyles.notice;
+      
       Toastify({
         text: message,
-        style: {
-          background: "linear-gradient(to right, #00b09b, #96c93d)",
-        },
+        style: style
       }).showToast();
     }
   }
 
+  function processFlashMessages() {
+    // Busca todos os elementos flash pela classe
+    const flashElements = document.querySelectorAll('.flash-message');
+    
+    flashElements.forEach(element => {
+      // Verifica todos os atributos do elemento para encontrar o tipo de flash
+      Array.from(element.attributes).forEach(attr => {
+        if (attr.name.startsWith('data-flash-')) {
+          const type = attr.name.replace('data-flash-', '');
+          const message = attr.value;
+          showToastify(message, type);
+          element.remove();
+        }
+      });
+    });
+  }
+
   // Executa quando a página carrega (incluindo navegação Turbo)
-  document.addEventListener('DOMContentLoaded', function() {
-    const noticeElement = document.querySelector('[data-flash-notice]');
-    if (noticeElement) {
-      showToastify(noticeElement.getAttribute('data-flash-notice'));
-      noticeElement.remove();
-    }
-  });
+  document.addEventListener('DOMContentLoaded', processFlashMessages);
 
   // Executa após navegação Turbo
-  document.addEventListener('turbo:load', function() {
-    const noticeElement = document.querySelector('[data-flash-notice]');
-    if (noticeElement) {
-      showToastify(noticeElement.getAttribute('data-flash-notice'));
-      noticeElement.remove();
-    }
-  });
+  document.addEventListener('turbo:load', processFlashMessages);
 </script>

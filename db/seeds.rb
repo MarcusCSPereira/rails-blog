@@ -11,3 +11,15 @@ admins.each do |email, name|
     admin.password_confirmation = ENV["DEFAULT_PASSWORD"]
   end
 end
+
+users = [
+  "user@user.com",
+  "user@test.com",
+]
+
+users.each do |email|
+  User.find_or_create_by!(email: email) do |user|
+    user.password = ENV["DEFAULT_PASSWORD"]
+    user.password_confirmation = ENV["DEFAULT_PASSWORD"]
+  end
+end

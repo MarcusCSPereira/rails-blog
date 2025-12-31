@@ -7,8 +7,9 @@ class ArticlesController < PublicController
     @other_articles = Article.includes(:author, :category, comments: :user)
       .with_attached_cover_image
       .where.not(id: @article.id)
-      .order(created_at: :desc)
+      .order(updated_at: :desc)
       .limit(3)
+    @comments = comments_sorted_by
   end
 
   private
@@ -17,6 +18,14 @@ class ArticlesController < PublicController
     @article = Article.includes(:author, :category, comments: :user)
       .with_attached_cover_image
       .friendly.find(params.expect(:id))
+  end
+
+  def comments_sorted_by
+    if params[:sort_by] == "last_comments"
+      @article.comments.order(created_at: :asc)
+    else
+      @article.comments.order(created_at: :desc)
+    end
   end
 
   def article_params
