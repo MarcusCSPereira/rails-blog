@@ -9,6 +9,16 @@ module ApplicationHelper
         # No Rails 8, variantes definidas no model podem ser acessadas diretamente
         variant_obj = article.cover_image.variant(variant)
 
+        # Debug: Logar informações em desenvolvimento
+        if Rails.env.development?
+          Rails.logger.debug("Variante #{variant} criada para artigo #{article.id}: #{variant_obj.class}")
+          Rails.logger.debug("URL: #{begin
+            variant_obj.url
+          rescue
+            "N/A"
+          end}")
+        end
+
         # Em produção, pode ser necessário processar a variante explicitamente
         # O Rails processa sob demanda, mas podemos forçar se necessário
         variant_obj

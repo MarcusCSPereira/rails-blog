@@ -3,6 +3,16 @@
 namespace :debug do
   desc "Debug Active Storage images and variants"
   task images: :environment do
+    # Verificar se consegue conectar ao banco
+    begin
+      ActiveRecord::Base.connection
+    rescue => e
+      puts "⚠️  Não foi possível conectar ao banco de dados: #{e.message}"
+      puts "   Execute este script no Railway ou configure o banco localmente"
+      puts "\n   Para testar no Railway:"
+      puts "   railway run rails debug:images"
+      next
+    end
     puts "=" * 80
     puts "DEBUG: Active Storage Images"
     puts "=" * 80
