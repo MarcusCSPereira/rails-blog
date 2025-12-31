@@ -9,6 +9,7 @@
       <div class="input-row">
         <div class="input-container">
           <%= form.label :body, class: "label" %>
+          <%= link_to "[markdown]", "#", id: "markdown-button" if params[:action] != "show" %>
           <%= form.textarea :body, rows: 18, placeholder: "Digite aqui o conteúdo do post", class: "textarea", disabled: params[:action] == "show" %>
         </div>
       </div>
