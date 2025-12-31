@@ -26,6 +26,13 @@ Rails.application.configure do
   # Store uploaded files on the local file system (see config/storage.yml for options).
   config.active_storage.service = :local
 
+  # Configurar Active Storage para usar MiniMagick para processar variantes
+  config.active_storage.variant_processor = :mini_magick
+
+  # Configurar Active Storage para resolver variantes através do proxy (necessário para processar variantes)
+  # Isso garante que as variantes sejam processadas sob demanda quando solicitadas
+  config.active_storage.resolve_model_to_route = :rails_storage_proxy
+
   # Assume all access to the app is happening through a SSL-terminating reverse proxy.
   # Railway termina SSL no proxy, então assumimos SSL
   config.assume_ssl = true
