@@ -49,6 +49,8 @@
     box-sizing: border-box;
     max-width: 100%;
     justify-content: center;
+    // Permitir que a imagem use seu tamanho natural (850px para variante medium)
+    min-width: 0; // Permite que a imagem seja menor que o container se necessário
 
     @include bp-medium() {
       border-radius: 0;
@@ -73,11 +75,17 @@
   }
 
   .post-detail-image img {
-    display: flex;
-    max-width: 100%;
+    display: block;
+    // Usar width: auto para manter o tamanho natural da variante processada
+    // A variante medium é 850x650, então a imagem manterá essas dimensões
+    width: auto;
+    max-width: 100%; // Mas ainda respeitar o container se for menor
+    height: auto;
+    object-fit: contain; // Mostrar imagem completa sem cortar
 
     @include bp-medium() {
       border-radius: 12px;
+      width: 100%; // Em mobile, usar 100% para responsividade
     }
   }
 
