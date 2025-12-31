@@ -2,6 +2,16 @@
 
 # If running the rails server then create or migrate existing database
 if [ "${@: -2:1}" == "./bin/rails" ] && [ "${@: -1:1}" == "server" ]; then
+  # Verificar se DATABASE_URL está definida
+  if [ -z "$DATABASE_URL" ]; then
+    echo "ERRO: DATABASE_URL não está definida!" >&2
+    echo "Por favor, defina a variável DATABASE_URL no Railway." >&2
+    echo "Você pode copiar o valor do serviço PostgreSQL ou construir manualmente:" >&2
+    echo "  postgresql://usuario:senha@host:porta/database" >&2
+    exit 1
+  fi
+  
+  echo "Preparando banco de dados..."
   ./bin/rails db:prepare
 fi
 
